@@ -18,7 +18,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
  */
 class SkinStrapping extends SkinTemplate {
 
-  var $skinname = 'strapping', $stylename = 'strapping',
+  public $skinname = 'strapping', $stylename = 'strapping',
     $template = 'StrappingTemplate', $useHeadElement = true;
 
   /**
