@@ -237,7 +237,7 @@ class StrappingTemplate extends BaseTemplate {
           # If there's a custom layout, the H1 and layout is up to the page ?>
           <div id="innerbodycontent" class="layout">
             <h1 id="firstHeading" class="firstHeading page-header">
-              <span dir="auto"><?php $this->html( 'title' ) ?></span>
+              <?php $this->html( 'title' ) ?>
             </h1>
             <!-- subtitle -->
             <div id="contentSub" <?php $this->html( 'userlangattributes' ) ?>><?php $this->html( 'subtitle' ) ?></div>
