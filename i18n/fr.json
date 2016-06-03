@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kumkumuk"
+			"Kumkumuk",
+			"Wladek92"
 		]
 	},
-	"strapping-desc": "Le cerclage est construit au sommet d'un Vecteur modifié thème de MediaWiki et utilise de Twitter Bootstrap pour la base de mise en page, la typographie, et autres widgets."
+	"strapping-desc": "Le cerclage est construit sur un thème Vecteur modifié de MediaWiki et utilise le Bootstrap de Twitter pour la mise en page de base, la typographie, et autres widgets."
 }
