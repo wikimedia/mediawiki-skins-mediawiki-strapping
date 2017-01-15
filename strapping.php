@@ -19,6 +19,7 @@ $wgExtensionCredits['skin'][] = array(
 
 $wgValidSkinNames['strapping'] = 'Strapping';
 $wgAutoloadClasses['SkinStrapping'] = __DIR__ . '/Strapping.skin.php';
+$wgAutoloadClasses['StrappingTemplate'] = __DIR__ . '/Strapping.skin.php';
 $wgMessagesDirs['SkinStrapping'] = __DIR__ . '/i18n';
  
 $wgResourceModules['skins.strapping'] = array(
