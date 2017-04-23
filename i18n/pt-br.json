@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"!Silent"
+			"!Silent",
+			"Felipe L. Ewald"
 		]
 	},
-	"strapping-desc": "O tema Strapping foi criado em cima de uma modificação do tema Vector do MediaWiki e usa o Bootstrap do Twitter para a base do <i>layout</i>, da tipografia e dos <i>widgets</i> adicionais."
+	"skinname-strapping": "Strapping",
+	"strapping-desc": "O tema Strapping foi criado em cima de uma modificação do tema Vector do MediaWiki e usa o Bootstrap do Twitter para a base do <i>layout</i>, da tipografia e dos <i>widgets</i> adicionais"
 }
