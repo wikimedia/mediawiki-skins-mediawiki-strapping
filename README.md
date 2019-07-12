@@ -5,7 +5,7 @@ Its purpose is to provide a good base to build upon,
 and was primarily created to provide a great default for wiki-as-a-website
 — but it works well for standard wikis too.
 
-Strapping is built on top of a modified Vector theme from **[MediaWiki](http://mediawiki.org/)**
+Strapping is built on top of a modified Vector theme from **[MediaWiki](https://mediawiki.org/)**
 and utilizes Twitter's **[Bootstrap](http://twitter.github.com/bootstrap/)**
 for base layout, typography, and additional widgets.
 
@@ -34,7 +34,7 @@ You can see a (customized) instance of Strapping in action by visiting http://oV
 ## Get started
 
 1. Change to the "skins" subdirectory of your MediaWiki installation: `cd skins`
-2. Clone the repository: 
+2. Clone the repository:
    `git clone https://github.com/OSAS/strapping-mediawiki strapping`
 3. Edit `LocalSettings.php` to add: `require_once( "$IP/skins/strapping/strapping.php" );`
 4. Edit `LocalSettings.php` to change the skin to "strapping":
@@ -126,7 +126,7 @@ There are a few Strapping-specific CSS classes you can use.
 ### Layout
 
 Do **NOT** use tables for layout.
-Instead, use Bootstrap's scaffolding to do layout. 
+Instead, use Bootstrap's scaffolding to do layout.
 
 Bootstrap scaffolding is based on having rows
 that are formed with 12 possible columns.
@@ -158,7 +158,7 @@ please visit [Bootstrap's documentation](http://twitter.github.com/bootstrap/sca
 
 ### Documentation
 
-Please consult [MediaWiki's formatting page](http://www.mediawiki.org/wiki/Help:Formatting)
+Please consult [MediaWiki's formatting page](https://www.mediawiki.org/wiki/Help:Formatting)
 for help with writing wiki text.
 
 If you're feeling adventurous and want to use some more advanced formatting,
