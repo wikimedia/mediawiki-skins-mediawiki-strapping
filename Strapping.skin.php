@@ -8,10 +8,6 @@
  * @ingroup Skins
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
-  die( -1 );
-}
-
 /**
  * SkinTemplate class for Vector skin
  * @ingroup Skins
