@@ -1,55 +1,4 @@
 <?php
-/**
- * Vector - Modern version of MonoBook with fresh look and many usability
- * improvements.
- *
- * @todo document
- * @file
- * @ingroup Skins
- */
-
-/**
- * SkinTemplate class for Vector skin
- * @ingroup Skins
- */
-class SkinStrapping extends SkinTemplate {
-
-  public $skinname = 'strapping', $stylename = 'strapping',
-    $template = 'StrappingTemplate';
-
-  /**
-   * Initializes output page and sets up skin-specific parameters
-   * @param $out OutputPage object to initialize
-   */
-  public function initPage( OutputPage $out ) {
-    global $wgLocalStylePath;
-
-    parent::initPage( $out );
-
-    // Append CSS which includes IE only behavior fixes for hover support -
-    // this is better than including this in a CSS fille since it doesn't
-    // wait for the CSS file to load before fetching the HTC file.
-    $min = $this->getRequest()->getFuzzyBool( 'debug' ) ? '' : '.min';
-    $out->addHeadItem( 'csshover',
-      '<!--[if lt IE 7]><style type="text/css">body{behavior:url("' .
-        htmlspecialchars( $wgLocalStylePath ) .
-        "/{$this->stylename}/csshover{$min}.htc\")}</style><![endif]-->"
-    );
-
-    $out->addHeadItem('responsive', '<meta name="viewport" content="width=device-width, initial-scale=1.0">');
-    $out->addModuleScripts( 'skins.strapping' );
-  }
-
-  /**
-   * Load skin and user CSS files in the correct order
-   * fixes bug 22916
-   * @param $out OutputPage object
-   */
-  function setupSkinUserCss( OutputPage $out ){
-    parent::setupSkinUserCss( $out );
-    $out->addModuleStyles( 'skins.strapping' );
-  }
-}
 
 /**
  * QuickTemplate class for Vector skin
@@ -98,7 +47,7 @@ class StrappingTemplate extends BaseTemplate {
 
         $xmlID = isset( $link['id'] ) ? $link['id'] : 'ca-' . $xmlID;
         $nav[$section][$key]['attributes'] =
-          ' id="' . Sanitizer::escapeId( $xmlID ) . '"';
+          ' id="' . Sanitizer::escapeIdForAttribute( $xmlID ) . '"';
         if ( $link['class'] ) {
           $nav[$section][$key]['attributes'] .=
             ' class="' . htmlspecialchars( $link['class'] ) . '"';
@@ -430,7 +379,7 @@ class StrappingTemplate extends BaseTemplate {
         case 'TOOLBOX':
 
           $theMsg = 'toolbox';
-          $theData = array_reverse($this->getToolbox());
+          $theData = array_reverse($this->get('sidebar')['TOOLBOX']);
           ?>
 
           <ul class="nav" role="navigation">
