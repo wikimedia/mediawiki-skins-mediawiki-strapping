@@ -1,0 +1,96 @@
+{
+	"name": "strapping",
+	"version": "1.0.0",
+	"author": [
+		"Garrett LeSage"
+	],
+	"url": "https://www.mediawiki.org/wiki/Skin:Strapping",
+	"descriptionmsg": "strapping-desc",
+	"namemsg": "skinname-strapping",
+	"license-name": "GPL-2.0-or-later",
+	"type": "skin",
+	"requires": {
+		"MediaWiki": ">= 1.36.0"
+	},
+	"ValidSkinNames": {
+		"strapping": {
+			"class": "SkinTemplate",
+			"args": [
+				{
+					"name": "strapping",
+					"template": "StrappingTemplate",
+					"responsive": true,
+					"scripts": [
+						"skins.strapping.js"
+					],
+					"styles": [
+						"skins.strapping.styles"
+					],
+					"messages": []
+				}
+			]
+		}
+	},
+	"SkinLessImportPaths": {
+		"strapping": "resources/mediawiki.less"
+	},
+	"MessagesDirs": {
+		"strapping": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"StrappingTemplate": "StrappingTemplate.php"
+	},
+	"ConfigRegistry": {
+		"strapping": "GlobalVarConfig::newInstance"
+	},
+	"ResourceModules": {
+		"skins.strapping.js": {
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"scripts": [
+				"bootstrap/js/bootstrap.js",
+				"strapping.js"
+			]
+		},
+		"skins.strapping.styles": {
+			"class": "ResourceLoaderSkinModule",
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"styles": [
+				"bootstrap/css/bootstrap.css",
+				"bootstrap/css/bootstrap-responsive.css",
+				"bootstrap/awesome/css/font-awesome.css",
+				"screen.css",
+				"theme.css"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteSkinPath": "strapping"
+	},
+	"config": {
+		"StrappingSkinLogoLocation": {
+			"value": "bodycontent"
+		},
+		"StrappingSkinLoginLocation": {
+			"value": "footer"
+		},
+		"StrappingSkinAnonNavbar": {
+			"value": false
+		},
+		"StrappingSkinUseStandardLayout": {
+			"value": true
+		},
+		"StrappingSkinDisplaySidebarNavigation": {
+			"value": false
+		}
+	},
+	"manifest_version": 2
+}
