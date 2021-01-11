@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Garrett LeSage"
+			"Garrett LeSage",
+			"Umherirrender"
 		]
 	},
-	"skinname-strapping": "{{optional}}",
+	"skinname-strapping": "{{name}}",
 	"strapping-desc": "{{desc|what=skin|name=Strapping|url=https://www.mediawiki.org/wiki/Skin:Strapping}}"
 }
