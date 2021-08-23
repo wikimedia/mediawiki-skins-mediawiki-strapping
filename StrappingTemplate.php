@@ -278,7 +278,15 @@ class StrappingTemplate extends BaseTemplate {
               endforeach; 
             }
           ?>
-          <?php $footericons = $this->getFooterIcons("icononly");
+          <?php
+          $footericons = $this->get('footericons');
+          foreach ( $footericons as $footerIconsKey => &$footerIconsBlock ) {
+              foreach ( $footerIconsBlock as $footerIconKey => $footerIcon ) {
+                  if ( !isset( $footerIcon['src'] ) ) {
+                    unset( $footerIconsBlock[$footerIconKey] );
+                  }
+              }
+          }
           if ( count( $footericons ) > 0 ): ?>
             <ul id="footer-icons" class="noprint">
     <?php      foreach ( $footericons as $blockName => $footerIcons ): ?>
@@ -600,11 +608,12 @@ class StrappingTemplate extends BaseTemplate {
           $theData = $this->data['language_urls']; ?>
           <ul class="nav" role="navigation">
             <li class="dropdown" id="p-<?php echo $theMsg; ?>" class="vectorMenu<?php if ( count($theData) == 0 ) echo ' emptyPortlet'; ?>">
-              <a data-toggle="dropdown" class="dropdown-toggle brand" role="menu"><?php echo $this->html($theMsg) ?> <b class="caret"></b></a>
+              <a data-toggle="dropdown" class="dropdown-toggle brand" role="menu"><?php echo $this->msg($theMsg) ?> <b class="caret"></b></a>
               <ul aria-labelledby="<?php echo $this->msg($theMsg); ?>" role="menu" class="dropdown-menu" <?php $this->html( 'userlangattributes' ) ?>>
 
-              <?php foreach( $content as $key => $val ) { ?>
-                <li class='$navClasses'><?php echo $this->makeLink($key, $val, $options); ?></li><?php
+              <?php foreach( $theData as $key => $val ) {
+              ?>
+                <?php echo $this->makeListItem($key, $val, []); ?><?php
               }?>
 
               </ul>            </li>
