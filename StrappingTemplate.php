@@ -93,13 +93,13 @@ class StrappingTemplate extends BaseTemplate {
           }
 
           # Edit button
-          $this->renderNavigation( array( 'EDIT' ) ); 
-          
+          $this->renderNavigation( array( 'EDIT' ) );
+
           # Actions menu
-          $this->renderNavigation( array( 'ACTIONS' ) ); 
+          $this->renderNavigation( array( 'ACTIONS' ) );
 
           if ( !isset( $portals['TOOLBOX'] ) ) {
-            $this->renderNavigation( array( 'TOOLBOX' ) ); 
+            $this->renderNavigation( array( 'TOOLBOX' ) );
           }
         ?>
       </div>
@@ -107,11 +107,11 @@ class StrappingTemplate extends BaseTemplate {
       <div class="pull-right">
         <?php
           if ($wgSearchPlacement['header']) {
-            $this->renderNavigation( array( 'SEARCH' ) ); 
+            $this->renderNavigation( array( 'SEARCH' ) );
           }
 
           # Personal menu (at the right)
-          $this->renderNavigation( array( 'PERSONAL' ) ); 
+          $this->renderNavigation( array( 'PERSONAL' ) );
         ?>
       </div>
 
@@ -181,7 +181,7 @@ class StrappingTemplate extends BaseTemplate {
 
         <!-- innerbodycontent -->
         <?php # Peek into the body content, to see if a custom layout is used
-        if ($wgStrappingSkinUseStandardLayout || preg_match("/class.*row/i", $this->data['bodycontent'])) { 
+        if ($wgStrappingSkinUseStandardLayout || preg_match("/class.*row/i", $this->data['bodycontent'])) {
           # If there's a custom layout, the H1 and layout is up to the page ?>
           <div id="innerbodycontent" class="layout">
             <h1 id="firstHeading" class="firstHeading page-header">
@@ -268,14 +268,14 @@ class StrappingTemplate extends BaseTemplate {
                   # Show the search in footer to all
                   if ($wgSearchPlacement['footer']) {
                     echo '<li>';
-                    $this->renderNavigation( array( 'SEARCHFOOTER' ) ); 
+                    $this->renderNavigation( array( 'SEARCHFOOTER' ) );
                     echo '</li>';
                   }
                 }
               ?>
             </ul>
-          <?php 
-              endforeach; 
+          <?php
+              endforeach;
             }
           ?>
           <?php
@@ -355,7 +355,7 @@ class StrappingTemplate extends BaseTemplate {
             <div class="actions pull-left nav">
                 <a id="b-edit" href="<?php echo $navTemp['href']; ?>" class="btn"><i class="icon-edit"></i> <?php echo $navTemp['text']; ?></a>
             </div>
-          <?php } 
+          <?php }
         break;
 
 
@@ -374,7 +374,7 @@ class StrappingTemplate extends BaseTemplate {
               <?php } ?>
               <ul aria-labelledby="<?php echo $this->msg($theMsg); ?>" role="menu" class="dropdown-menu" <?php $this->html( 'userlangattributes' ) ?>>
 
-                <?php 
+                <?php
                 foreach ( $theData as $link ) {
                   # Skip a few redundant links
                   if (preg_match('/^ca-(view|edit)$/', $link['id'])) { continue; }
@@ -462,7 +462,7 @@ class StrappingTemplate extends BaseTemplate {
 
           $theMsg = 'actions';
           $theData = array_reverse($this->data['action_urls']);
-          
+
           if (count($theData) > 0) {
             ?><ul class="nav" role="navigation">
               <li class="dropdown" id="p-<?php echo $theMsg; ?>" class="vectorMenu<?php if ( count($theData) == 0 ) echo ' emptyPortlet'; ?>">
@@ -589,7 +589,7 @@ class StrappingTemplate extends BaseTemplate {
                 <ul aria-labelledby="<?php echo htmlspecialchars( $name ); ?>" role="menu" class="dropdown-menu"><?php
             }
             # This is a rather hacky way to name the nav.
-            # (There are probably bugs here...) 
+            # (There are probably bugs here...)
             foreach( $content as $key => $val ) {
               $navClasses = '';
 

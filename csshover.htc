@@ -51,23 +51,23 @@ window.CSSHover = (function(){
 			return match.toUpperCase();
 		});
 	};
-	
+
 	/**
 	 *	Local CSSHover object
 	 *	--------------------------
 	 */
-	
+
 	var CSSHover = {
-		
+
 		// array of CSSHoverElements, used to unload created events
-		elements: [], 
-		
+		elements: [],
+
 		// buffer used for checking on duplicate expressions
-		callbacks: {}, 
-		
+		callbacks: {},
+
 		// init, called once ondomcontentready via the exposed window.CSSHover function
 		init:function() {
-			// don't run in IE8 standards; expressions don't work in standards mode anyway, 
+			// don't run in IE8 standards; expressions don't work in standards mode anyway,
 			// and the stuff we're trying to fix should already work properly
 			if(!REG_MSIE.test(navigator.userAgent) && !REG_COMPAT.test(window.document.compatMode)) {
 				return;
@@ -94,7 +94,7 @@ window.CSSHover = (function(){
 					// trycatch for various possible errors
 				}
 			}
-			
+
 			// interate the sheet's rules and send them to the parser
 			try {
 				var rules = sheet.rules;
@@ -109,28 +109,28 @@ window.CSSHover = (function(){
 
 		// magic starts here ...
 		parseCSSRule:function(rule, sheet) {
-			
-			// The sheet is used to insert new rules into, this must be the same sheet the rule 
+
+			// The sheet is used to insert new rules into, this must be the same sheet the rule
 			// came from, to ensure that relative paths keep pointing to the right location.
 
 			// only parse a rule if it contains an interactive pseudo.
 			var select = rule.selectorText;
 			if(REG_INTERACTIVE.test(select)) {
 				var style = rule.style.cssText;
-					
+
 				// affected elements are found by truncating the selector after the interactive pseudo,
 				// eg: "div li:hover" >>  "div li"
 				var affected = REG_AFFECTED.exec(select)[1];
-					
+
 				// that pseudo is needed for a classname, and defines the type of interaction (focus, hover, active)
 				// eg: "li:hover" >> "onhover"
 				var pseudo = select.replace(REG_PSEUDO, 'on$1');
-					
+
 				// the new selector is going to use that classname in a new css rule,
 				// since IE6 doesn't support multiple classnames, this is merged into one classname
 				// eg: "li:hover" >> "li.onhover",  "li.folder:hover" >> "li.folderonhover"
 				var newSelect = select.replace(REG_SELECT, '.$2' + pseudo);
-					
+
 				// the classname is needed for the events that are going to be set on affected nodes
 				// eg: "li.folder:hover" >> "folderonhover"
 				var className = REG_CLASS.exec(newSelect)[1];
@@ -138,23 +138,23 @@ window.CSSHover = (function(){
 				// no need to set the same callback more than once when the same selector uses the same classname
 				var hash = affected + className;
 				if(!this.callbacks[hash]) {
-					
+
 					// affected elements are given an expression under a borrowed css property, because fake properties
 					// can't have their expressions cleared. Different properties are used per pseudo, to avoid
-					// expressions from overwriting eachother. The expression does a callback to CSSHover.patch, 
+					// expressions from overwriting eachother. The expression does a callback to CSSHover.patch,
 					// rerouted via the exposed window.CSSHover function.
 					var property = Properties.get();
 					var atRuntime = camelize(property);
 
 					// because the expression is added to the stylesheet, and styles are always applied to html that is
 					// dynamically added to the dom, the expression will also trigger for those new elements (provided
-					// they are selected by the affected selector). 
+					// they are selected by the affected selector).
 					sheet.addRule(affected, property + ':expression(CSSHover(this, "'+pseudo+'", "'+className+'", "'+atRuntime+'"))');
-					
+
 					// hash it, so an identical selector/class combo does not duplicate the expression
 					this.callbacks[hash] = true;
 				}
-				
+
 				// duplicate expressions need not be set, but the style could differ
 				sheet.addRule(newSelect, style);
 			}
@@ -164,16 +164,16 @@ window.CSSHover = (function(){
 		patch:function(node, type, className, property) {
 
 			// restores the borrowed css property to the value of its immediate parent, clearing
-			// the expression so that it's not repeatedly called. 
+			// the expression so that it's not repeatedly called.
 			try {
 				var value = node.parentNode.currentStyle[property];
-				node.style[property] = value;	
+				node.style[property] = value;
 			} catch(e) {
 				// the above reset should never fail, but just in case, clear the runtimeStyle if it does.
 				// this will also stop the expression.
 				node.runtimeStyle[property] = '';
-			}			
-		
+			}
+
 			// just to make sure, also keep track of patched classnames locally on the node
 			if(!node.csshover) {
 				node.csshover = [];
@@ -185,7 +185,7 @@ window.CSSHover = (function(){
 
 				// create an instance for the given type and class
 				var element = new CSSHoverElement(node, type, className);
-				
+
 				// and store that instance for unloading later on
 				this.elements.push(element);
 			}
@@ -197,14 +197,14 @@ window.CSSHover = (function(){
 		// unload stuff onbeforeunload
 		unload:function() {
 			try {
-				
+
 				// remove events
 				var l = this.elements.length;
 				for(var i=0; i<l; i++) {
 					this.elements[i].unload();
 				}
 
-				// and set properties to null 
+				// and set properties to null
 				this.elements = [];
 				this.callbacks = {};
 
@@ -224,12 +224,12 @@ window.CSSHover = (function(){
 		onactive: { activator: 'onmousedown',  deactivator: 'onmouseup' },
 		onfocus:  { activator: 'onfocus',      deactivator: 'onblur' }
 	};
-	
+
 	// CSSHoverElement constructor, called via CSSHover.patch
 	function CSSHoverElement(node, type, className) {
 
-		// the CSSHoverElement patches individual nodes by manually applying the events that should 
-		// have fired by the css pseudoclasses, eg mouseenter and mouseleave for :hover. 
+		// the CSSHoverElement patches individual nodes by manually applying the events that should
+		// have fired by the css pseudoclasses, eg mouseenter and mouseleave for :hover.
 
 		this.node = node;
 		this.type = type;
@@ -238,21 +238,21 @@ window.CSSHover = (function(){
 		// store event handlers for removal onunload
 		this.activator =   function(){ node.className += ' ' + className; };
 		this.deactivator = function(){ node.className = node.className.replace(replacer, ' '); };
-		
+
 		// add the events
 		node.attachEvent(CSSEvents[type].activator, this.activator);
 		node.attachEvent(CSSEvents[type].deactivator, this.deactivator);
 	}
-	
+
 	CSSHoverElement.prototype = {
 		// onbeforeunload, called via CSSHover.unload
 		unload:function() {
 
-			// remove events 
+			// remove events
 			this.node.detachEvent(CSSEvents[this.type].activator, this.activator);
 			this.node.detachEvent(CSSEvents[this.type].deactivator, this.deactivator);
 
-			// and set properties to null 
+			// and set properties to null
 			this.activator = null;
 			this.deactivator = null;
 			this.node = null;
@@ -269,7 +269,7 @@ window.CSSHover = (function(){
 	 *	Public hook
 	 *	--------------------------
 	 */
-	
+
 	return function(node, type, className, property) {
 		if(node) {
 			// called via the css expression; patches individual nodes
