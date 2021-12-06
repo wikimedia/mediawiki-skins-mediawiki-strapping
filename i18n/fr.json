@@ -3,8 +3,10 @@
 		"authors": [
 			"Kumkumuk",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"Thibaut120094"
 		]
 	},
-	"strapping-desc": "L’habillage Cerclage est construit sur un thème Vecteur modifié de MediaWiki et utilise le Bootstrap de Twitter pour la mise en page de base, la typographie et d’autres widgets."
+	"skinname-strapping": "Cerclage",
+	"strapping-desc": "L’habillage Cerclage est construit sur un thème Vector modifié de MediaWiki et utilise Bootstrap de Twitter pour la mise en page de base, la typographie et d’autres widgets."
 }
