@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Piramidion"
+			"Piramidion",
+			"DDPAT"
 		]
 	},
+	"skinname-strapping": "Обв'язка",
 	"strapping-desc": "Тема оформлення «Strapping» побудована на модифікованій векторній темі оформлення з MediaWiki, і застосовує Bootstrap із Твіттера для базового компонування, типографії та додаткових віджетів."
 }
