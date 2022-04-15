@@ -1,4 +1,5 @@
 {
+	"name": "mediawiki-strapping",
 	"private": true,
 	"scripts": {
 		"test": "grunt test"
