@@ -71,7 +71,6 @@ class StrappingTemplate extends BaseTemplate {
     $this->data['variant_urls'] = $nav['variants'];
 
     // Output HTML Page
-    $this->html( 'headelement' );
 ?>
 
 <?php if ( $wgStrappingSkinAnonNavbar || $this->data['loggedin'] ) { ?>
@@ -302,11 +301,6 @@ class StrappingTemplate extends BaseTemplate {
         </div>
       </div>
       <!-- /footer -->
-
-    <?php $this->printTrail(); ?>
-
-  </body>
-</html>
 <?php
   }
 
