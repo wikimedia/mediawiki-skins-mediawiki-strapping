@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dbc334"
+			"Dbc334",
+			"Eleassar"
 		]
 	},
-	"strapping-desc": "Strapping je zgrajen na podlagi spremenjene teme Vector iz MediaWiki in uporablja Twitterjev Bootstrap za osnovno postavitev, tipografijo in dodatne pripomočke."
+	"strapping-desc": "Strapping je zgrajen na podlagi spremenjene teme Vector iz MediaWiki in za osnovno postavitev, tipografijo in dodatne pripomočke uporablja Twitterjev Bootstrap."
 }
