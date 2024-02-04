@@ -58,7 +58,7 @@
 			]
 		},
 		"skins.strapping.styles": {
-			"class": "ResourceLoaderSkinModule",
+			"class": "MediaWiki\\ResourceLoader\\SkinModule",
 			"targets": [
 				"desktop",
 				"mobile"
