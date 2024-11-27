@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"B3rnas",
 			"Hamilton Abreu",
 			"Mbs262"
 		]
 	},
-	"strapping-desc": "O tema Strapping foi criado sobre uma modificação do tema Vector do MediaWiki e usa o Bootstrap do Twitter para a disposição de base, a tipografia e <i>widgets</i> adicionais"
+	"strapping-desc": "O Strapping foi construído com base num tema Vetor modificado do MediaWiki e utiliza o Bootstrap do Twitter para a disposição de base, tipografia e widgets adicionais"
 }
