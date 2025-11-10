@@ -10,7 +10,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.40.0"
+		"MediaWiki": ">= 1.41.0"
 	},
 	"ValidSkinNames": {
 		"strapping": {
@@ -44,7 +44,7 @@
 		"StrappingTemplate": "StrappingTemplate.php"
 	},
 	"ConfigRegistry": {
-		"strapping": "GlobalVarConfig::newInstance"
+		"strapping": "MediaWiki\\Config\\GlobalVarConfig::newInstance"
 	},
 	"ResourceModules": {
 		"skins.strapping.js": {
