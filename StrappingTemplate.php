@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\MediaWikiServices;
 
@@ -62,7 +63,7 @@ class StrappingTemplate extends BaseTemplate {
             Linker::tooltip( $xmlID );
         } else {
           $nav[$section][$key]['key'] =
-            Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( $xmlID ) );
+            Html::expandAttributes( Linker::tooltipAndAccesskeyAttribs( $xmlID ) );
         }
       }
     }
@@ -310,9 +311,9 @@ class StrappingTemplate extends BaseTemplate {
    */
   private function renderLogo() {
         $mainPageLink = $this->data['nav_urls']['mainpage']['href'];
-        $toolTip = Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) );
+        $toolTip = Html::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) );
 ?>
-                  <ul class="nav" role="navigation"><li id="p-logo"><a href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" <?php echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>><img src="<?php $this->text( 'logopath' ); ?>" alt="<?php $this->html('sitename'); ?>"></a><li></ul>
+                  <ul class="nav" role="navigation"><li id="p-logo"><a href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" <?php echo Html::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>><img src="<?php $this->text( 'logopath' ); ?>" alt="<?php $this->html('sitename'); ?>"></a><li></ul>
 <?php
   }
 
