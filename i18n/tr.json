@@ -2,8 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
+			"HakanIST",
 			"MuratTheTurkish"
 		]
 	},
+	"skinname-strapping": "Strapping",
 	"strapping-desc": "Strapping, MediaWiki'nin değiştirilmiş bir Vector temasının üzerine inşa edilmiştir ve temel düzen, tipografi ve ek widget'lar için Twitter'ın Bootstrap'ini kullanır."
 }
