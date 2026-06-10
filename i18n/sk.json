@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"skinname-strapping": "Strapping",
+	"strapping-desc": "Strapping je postavený na upravenej téme Vector z MediaWiki a využíva Twitter Bootstrap pre základné rozloženie, typografiu a ďalšie widgety"
+}
