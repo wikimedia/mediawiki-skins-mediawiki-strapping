@@ -10,7 +10,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.41.0"
+		"MediaWiki": ">= 1.47.0"
 	},
 	"ValidSkinNames": {
 		"strapping": {
@@ -21,6 +21,16 @@
 					"template": "StrappingTemplate",
 					"responsive": true,
 					"bodyOnly": true,
+					"menus": [
+						"associated-pages",
+						"views",
+						"actions",
+						"variants",
+						"user-page",
+						"user-interface-preferences",
+						"notifications",
+						"user-menu"
+					],
 					"scripts": [
 						"skins.strapping.js"
 					],

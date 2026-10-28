@@ -9,7 +9,23 @@ use MediaWiki\MediaWikiServices;
  * @ingroup Skins
  */
 class StrappingTemplate extends BaseTemplate {
+  /**
+	 * Backwards compatibility method to get personal tools the "classic way" that doesn't trigger
+	 * deprecation warnings (T422975).
+	 *
+	 * @return array
+	 */
+	private function getPersonalToolsClassic() {
+		$cNav = $this->get( 'content_navigation' );
+		$personalTools = array_merge(
+			$cNav['user-interface-preferences'],
+			$cNav['user-page'],
+			$cNav['notifications'],
+			$cNav['user-menu']
+		);
 
+		return $this->getSkin()->getPersonalToolsForMakeListItem( $personalTools );
+	}
   /* Functions */
 
   /**
@@ -53,7 +69,7 @@ class StrappingTemplate extends BaseTemplate {
         $xmlID = isset( $link['id'] ) ? $link['id'] : 'ca-' . $xmlID;
         $nav[$section][$key]['attributes'] =
           ' id="' . Sanitizer::escapeIdForAttribute( $xmlID ) . '"';
-        if ( $link['class'] ) {
+        if ( $link['class'] ?? false ) {
           $nav[$section][$key]['attributes'] .=
             ' class="' . htmlspecialchars( $link['class'] ) . '"';
           unset( $nav[$section][$key]['class'] );
@@ -67,7 +83,7 @@ class StrappingTemplate extends BaseTemplate {
         }
       }
     }
-    $this->data['namespace_urls'] = $nav['namespaces'];
+    $this->data['namespace_urls'] = $nav['associated-pages'];
     $this->data['view_urls'] = $nav['views'];
     $this->data['action_urls'] = $nav['actions'];
     $this->data['variant_urls'] = $nav['variants'];
@@ -262,7 +278,7 @@ class StrappingTemplate extends BaseTemplate {
 
                   # Show sign in link, if not signed in
                   if ($wgStrappingSkinLoginLocation == 'footer' && !$this->data['loggedin']) {
-                    $personalTemp = $this->getPersonalTools();
+                    $personalTemp = $this->getPersonalToolsClassic();
                     ?><li id="pt-login"><a href="<?php echo $personalTemp['login']['links'][0]['href'] ?>"><?php echo $personalTemp['login']['links'][0]['text']; ?></a></li><?php
                   }
 
@@ -484,7 +500,7 @@ class StrappingTemplate extends BaseTemplate {
 
         case 'PERSONAL':
           $theMsg = 'personaltools';
-          $theData = $this->getPersonalTools();
+          $theData = $this->getPersonalToolsClassic();
           $theTitle = $this->data['username'];
           $showPersonal = false;
           foreach ( $theData as $key => $item ) {
